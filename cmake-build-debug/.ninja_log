@@ -1,0 +1,8 @@
+# ninja log v5
+1	192	6839241242455358	build.ninja	ad7137fa5c39377f
+1	144	6839239603431195	CMakeFiles/basicOfProgramming.dir/main.c.obj	b0725e2183dc9499
+91	197	6839240672291583	basicOfProgramming.exe	84f742a590a6798
+1	91	6839240671251550	CMakeFiles/basicOfProgramming.dir/lab1.1.c.obj	6914643716bfe4b9
+2	182	6839241242455358	build.ninja	ad7137fa5c39377f
+1	76	6839241243465428	CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.1.c.obj	7be4c0d2ee4bf472
+76	193	6839241244615641	basicOfProgramming.exe	d8d4b9dc43084c7d

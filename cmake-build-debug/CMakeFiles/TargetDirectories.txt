@@ -1,0 +1,3 @@
+C:/Users/RedCapella/CLionProjects/basicOfProgramming/cmake-build-debug/CMakeFiles/basicOfProgramming.dir
+C:/Users/RedCapella/CLionProjects/basicOfProgramming/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/RedCapella/CLionProjects/basicOfProgramming/cmake-build-debug/CMakeFiles/rebuild_cache.dir
