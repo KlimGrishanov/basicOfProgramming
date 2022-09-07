@@ -15,7 +15,27 @@ int main(){
     ansSecondLine = findForSecondLine(x, y);
     ansThirdLine = findForThirdLine(x, y);
     if(ansFirstLine == 0 || ansSecondLine == 0 || ansThirdLine == 0){
-        printf("Point on the line.");
+        if(ansFirstLine == 0 && ansSecondLine != 0 && ansThirdLine != 0){
+            printf("y = 2x + 2");
+        }
+        else if(ansSecondLine == 0 && ansFirstLine != 0 && ansThirdLine != 0){
+            printf("y = 0.5x - 1");
+        }
+        else if(ansThirdLine == 0 && ansFirstLine != 0 && ansSecondLine != 0){
+            printf("y = -x + 2");
+        }
+        else if(ansFirstLine == 0 && ansSecondLine == 0){
+            printf("y = 2x + 2\n");
+            printf("y = 0.5x - 1");
+        }
+        else if(ansFirstLine == 0 && ansThirdLine == 0){
+            printf("y = 2x + 2\n");
+            printf("y = -x + 2");
+        }
+        else{
+            printf("y = 0.5x - 1\n");
+            printf("y = -x + 2");
+        }
     }
     else if(ansFirstLine == -1 && ansSecondLine == 1 && ansThirdLine == 1){
         printf("Area #1");
