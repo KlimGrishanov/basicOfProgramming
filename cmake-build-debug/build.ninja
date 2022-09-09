@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/RedCapella/CLionProjects/basicOfProgramming/cmak
 
 build cmake_object_order_depends_target_basicOfProgramming: phony || CMakeFiles/basicOfProgramming.dir
 
-build CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.2.c.obj: C_COMPILER__basicOfProgramming_Debug C$:/Users/RedCapella/CLionProjects/basicOfProgramming/Lab$ 1/lab1.2.c || cmake_object_order_depends_target_basicOfProgramming
-  DEP_FILE = CMakeFiles\basicOfProgramming.dir\Lab_1\lab1.2.c.obj.d
+build CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.1.c.obj: C_COMPILER__basicOfProgramming_Debug C$:/Users/RedCapella/CLionProjects/basicOfProgramming/Lab$ 1/lab1.1.c || cmake_object_order_depends_target_basicOfProgramming
+  DEP_FILE = CMakeFiles\basicOfProgramming.dir\Lab_1\lab1.1.c.obj.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles\basicOfProgramming.dir
   OBJECT_FILE_DIR = CMakeFiles\basicOfProgramming.dir\Lab_1
@@ -63,7 +63,7 @@ build CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.2.c.obj: C_COMPILER__basicOfP
 #############################################
 # Link the executable basicOfProgramming.exe
 
-build basicOfProgramming.exe: C_EXECUTABLE_LINKER__basicOfProgramming_Debug CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.2.c.obj
+build basicOfProgramming.exe: C_EXECUTABLE_LINKER__basicOfProgramming_Debug CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.1.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\basicOfProgramming.dir

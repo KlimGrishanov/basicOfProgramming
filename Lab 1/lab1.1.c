@@ -1,19 +1,29 @@
 #include <stdio.h>
 
+void findPosition(double x, double y);
+double input(double *x, double *y);
+
 int main(void) {
-    printf("Line equation: y = 0.5x + 1\n");
-    printf("Please insert coordinates of the point: \n");
     double x, y;
-    scanf("%lf %lf", &x, &y);
-    if(y == (0.5 * x + 1)){
+    input(&x, &y);
+    findPosition(x, y);
+    return 0;
+}
+
+double input(double *x, double *y){
+    printf("Please insert coordinates of the point: \n");
+    scanf("%f %f", x, y);
+}
+
+void findPosition(double x, double y){
+    double lineY = 0.5 * x + 1;
+    if(y == lineY){
         printf("Point is on the line");
     }
-    else if(y < (0.5 * x + 1)){
+    else if(y < lineY){
         printf("Point is above line");
     }
     else{
         printf("Point is below line");
     }
-    return 0;
 }
-

@@ -1,13 +1,13 @@
 # ninja log v5
-1	354	6842596599078929	build.ninja	ad7137fa5c39377f
-1	369	6842596273276359	CMakeFiles/basicOfProgramming.dir/Lab_2/lab2.c.obj	ad366435f83dc9b2
+2	230	6844140981587114	build.ninja	ad7137fa5c39377f
+6	148	6843458215548874	CMakeFiles/basicOfProgramming.dir/Lab_2/lab2.c.obj	ad366435f83dc9b2
 2	84	6840053946725666	CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.1.c.obj	7be4c0d2ee4bf472
-370	587	6842596275386689	basicOfProgramming.exe	373b3fe63408365c
+149	296	6843458216971117	basicOfProgramming.exe	373b3fe63408365c
 1	144	6839239603431195	CMakeFiles/basicOfProgramming.dir/main.c.obj	b0725e2183dc9499
 1	91	6839240671251550	CMakeFiles/basicOfProgramming.dir/lab1.1.c.obj	6914643716bfe4b9
-3	101	6840239225453975	CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.2.c.obj	b406c5f86ccb21a4
-2	212	6842596599078929	build.ninja	ad7137fa5c39377f
-3	134	6842596600791934	CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.2.c.obj	b406c5f86ccb21a4
-134	299	6842596602390521	basicOfProgramming.exe	3513ca16d2739d41
 6	139	6842597011605110	CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.2.c.obj	b406c5f86ccb21a4
-140	308	6842597013231632	basicOfProgramming.exe	3513ca16d2739d41
+3	225	6844140981587114	build.ninja	ad7137fa5c39377f
+1	79	6844140982654311	CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.1.c.obj	7be4c0d2ee4bf472
+79	182	6844140983654268	basicOfProgramming.exe	d8d4b9dc43084c7d
+3	81	6844144769605256	CMakeFiles/basicOfProgramming.dir/Lab_1/lab1.1.c.obj	7be4c0d2ee4bf472
+81	189	6844144770654838	basicOfProgramming.exe	d8d4b9dc43084c7d
