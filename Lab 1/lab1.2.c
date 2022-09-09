@@ -5,67 +5,49 @@
 double findForFirstLine(double x, double y);
 double findForSecondLine(double x, double y);
 double findForThirdLine(double x, double y);
+double firstLineY(double x);
+double secondLineY(double x);
+double thirdLineY(double x);
+void printArea(int numArea);
+void findPosition(double x, double y);
+void findArea(int ansFirstLine, int ansSecondLine, int ansThirdLine);
+void findIntersection(int ansFirstLine, int ansSecondLine, int ansThirdLine);
+double input(double *x, double *y);
 
 int main(){
-    int ansFirstLine, ansSecondLine, ansThirdLine;
-    printf("Please insert coordinates of the point:\n");
     double x, y;
-    scanf("%lf %lf", &x, &y);
-    ansFirstLine = findForFirstLine(x, y);
-    ansSecondLine = findForSecondLine(x, y);
-    ansThirdLine = findForThirdLine(x, y);
-    if(ansFirstLine == 0 || ansSecondLine == 0 || ansThirdLine == 0){
-        if(ansFirstLine == 0 && ansSecondLine != 0 && ansThirdLine != 0){
-            printf("y = 2x + 2");
-        }
-        else if(ansSecondLine == 0 && ansFirstLine != 0 && ansThirdLine != 0){
-            printf("y = 0.5x - 1");
-        }
-        else if(ansThirdLine == 0 && ansFirstLine != 0 && ansSecondLine != 0){
-            printf("y = -x + 2");
-        }
-        else if(ansFirstLine == 0 && ansSecondLine == 0){
-            printf("y = 2x + 2\n");
-            printf("y = 0.5x - 1");
-        }
-        else if(ansFirstLine == 0 && ansThirdLine == 0){
-            printf("y = 2x + 2\n");
-            printf("y = -x + 2");
-        }
-        else{
-            printf("y = 0.5x - 1\n");
-            printf("y = -x + 2");
-        }
-    }
-    else if(ansFirstLine == -1 && ansSecondLine == 1 && ansThirdLine == 1){
-        printf("Area #1");
-    }
-    else if(ansFirstLine == -1 && ansSecondLine == -1 && ansThirdLine == 1){
-        printf("Area #2");
-    }
-    else if(ansFirstLine == -1 && ansSecondLine == -1 && ansThirdLine == -1){
-        printf("Area #3");
-    }
-    else if(ansFirstLine == 1 && ansSecondLine == -1 && ansThirdLine == -1){
-        printf("Area #4");
-    }
-    else if(ansFirstLine == 1 && ansSecondLine == 1 && ansThirdLine == -1){
-        printf("Area #5");
-    }
-    else if(ansFirstLine == 1 && ansSecondLine == 1 && ansThirdLine == 1){
-        printf("Area #6");
-    }
-    else{
-        printf("Area #7");
-    }
+    input(&x, &y);
+    findPosition(x, y);
+}
+
+void printArea(int numArea){
+    printf("The point in %d area", numArea);
+}
+
+double input(double *x, double *y){
+    printf("Please insert coordinates of the point: \n");
+    scanf("%f %f", x, y);
+}
+
+double firstLineY(double x){
+    return 2 * x + 2;
+}
+
+double secondLineY(double x){
+    return 0.5 * x - 1;
+}
+
+double thirdLineY(double x){
+    return (-x) + 2;
 }
 
 double findForFirstLine(double x, double y){
     int ans;
-    if(y == (2 * x + 2)){
+    double lineY = firstLineY(x);
+    if(y == lineY){
         ans = 0;
     }
-    else if(y > (2 * x + 2)){
+    else if(y > lineY){
         ans = 1;
     }
     else{
@@ -76,10 +58,11 @@ double findForFirstLine(double x, double y){
 
 double findForSecondLine(double x, double y){
     int ans;
-    if(y == (0.5 * x - 1)){
+    double lineY = secondLineY(x);
+    if(y == lineY){
         ans = 0;
     }
-    else if(y > (0.5 * x - 1)){
+    else if(y > lineY){
         ans = 1;
     }
     else{
@@ -90,14 +73,76 @@ double findForSecondLine(double x, double y){
 
 double findForThirdLine(double x, double y){
     int ans;
-    if(y == (-x + 2)){
+    double lineY = thirdLineY(x);
+    if(y == lineY){
         ans = 0;
     }
-    else if(y > (-x + 2)){
+    else if(y > lineY){
         ans = 1;
     }
     else{
         ans = -1;
     }
     return ans;
+}
+
+void findPosition(double x, double y){
+    int ansFirstLine, ansSecondLine, ansThirdLine;
+    ansFirstLine = findForFirstLine(x, y);
+    ansSecondLine = findForSecondLine(x, y);
+    ansThirdLine = findForThirdLine(x, y);
+    if(ansFirstLine == 0 || ansSecondLine == 0 || ansThirdLine == 0){
+        findIntersection(ansFirstLine, ansSecondLine, ansThirdLine);
+    }
+    else{
+        findArea(ansFirstLine, ansSecondLine, ansThirdLine);
+    }
+}
+
+void findIntersection(int ansFirstLine, int ansSecondLine, int ansThirdLine){
+    if(ansFirstLine == 0 && ansSecondLine != 0 && ansThirdLine != 0){
+        printf("y = 2x + 2");
+    }
+    else if(ansSecondLine == 0 && ansFirstLine != 0 && ansThirdLine != 0){
+        printf("y = 0.5x - 1");
+    }
+    else if(ansThirdLine == 0 && ansFirstLine != 0 && ansSecondLine != 0){
+        printf("y = -x + 2");
+    }
+    else if(ansFirstLine == 0 && ansSecondLine == 0){
+        printf("y = 2x + 2\n");
+        printf("y = 0.5x - 1");
+    }
+    else if(ansFirstLine == 0 && ansThirdLine == 0){
+        printf("y = 2x + 2\n");
+        printf("y = -x + 2");
+    }
+    else{
+        printf("y = 0.5x - 1\n");
+        printf("y = -x + 2");
+    }
+}
+
+void findArea(int ansFirstLine, int ansSecondLine, int ansThirdLine){
+    if(ansFirstLine == -1 && ansSecondLine == 1 && ansThirdLine == 1){
+        printArea(1);
+    }
+    else if(ansFirstLine == -1 && ansSecondLine == -1 && ansThirdLine == 1){
+        printArea(2);
+    }
+    else if(ansFirstLine == -1 && ansSecondLine == -1 && ansThirdLine == -1){
+        printArea(3);
+    }
+    else if(ansFirstLine == 1 && ansSecondLine == -1 && ansThirdLine == -1){
+        printArea(4);
+    }
+    else if(ansFirstLine == 1 && ansSecondLine == 1 && ansThirdLine == -1){
+        printArea(5);
+    }
+    else if(ansFirstLine == 1 && ansSecondLine == 1 && ansThirdLine == 1){
+        printArea(6);
+    }
+    else{
+        printArea(7);
+    }
 }
