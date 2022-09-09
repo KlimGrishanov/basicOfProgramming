@@ -2,16 +2,19 @@
 // 0 - on line
 // 1 - above
 // -1 - below
-double findForFirstLine(double x, double y);
-double findForSecondLine(double x, double y);
-double findForThirdLine(double x, double y);
+
+double findForLine(double y, double lineY);
+
 double firstLineY(double x);
 double secondLineY(double x);
 double thirdLineY(double x);
+
 void printArea(int numArea);
+
 void findPosition(double x, double y);
 void findArea(int ansFirstLine, int ansSecondLine, int ansThirdLine);
 void findIntersection(int ansFirstLine, int ansSecondLine, int ansThirdLine);
+
 double input(double *x, double *y);
 
 int main(){
@@ -26,7 +29,7 @@ void printArea(int numArea){
 
 double input(double *x, double *y){
     printf("Please insert coordinates of the point: \n");
-    scanf("%f %f", x, y);
+    scanf("%lf %lf", x, y);
 }
 
 double firstLineY(double x){
@@ -41,39 +44,8 @@ double thirdLineY(double x){
     return (-x) + 2;
 }
 
-double findForFirstLine(double x, double y){
+double findForLine(double y, double lineY){
     int ans;
-    double lineY = firstLineY(x);
-    if(y == lineY){
-        ans = 0;
-    }
-    else if(y > lineY){
-        ans = 1;
-    }
-    else{
-        ans = -1;
-    }
-    return ans;
-}
-
-double findForSecondLine(double x, double y){
-    int ans;
-    double lineY = secondLineY(x);
-    if(y == lineY){
-        ans = 0;
-    }
-    else if(y > lineY){
-        ans = 1;
-    }
-    else{
-        ans = -1;
-    }
-    return ans;
-}
-
-double findForThirdLine(double x, double y){
-    int ans;
-    double lineY = thirdLineY(x);
     if(y == lineY){
         ans = 0;
     }
@@ -88,9 +60,9 @@ double findForThirdLine(double x, double y){
 
 void findPosition(double x, double y){
     int ansFirstLine, ansSecondLine, ansThirdLine;
-    ansFirstLine = findForFirstLine(x, y);
-    ansSecondLine = findForSecondLine(x, y);
-    ansThirdLine = findForThirdLine(x, y);
+    ansFirstLine = findForLine(y, firstLineY(x));
+    ansSecondLine = findForLine(y, secondLineY(x));
+    ansThirdLine = findForLine(y, thirdLineY(x));
     if(ansFirstLine == 0 || ansSecondLine == 0 || ansThirdLine == 0){
         findIntersection(ansFirstLine, ansSecondLine, ansThirdLine);
     }

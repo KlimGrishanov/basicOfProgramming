@@ -13,7 +13,7 @@ int main(void) {
 
 void input(double *x, double *y){
     printf("Please insert coordinates of the point: \n");
-    scanf("%f %f", x, y);
+    scanf("%lf %lf", x, y);
 }
 
 double findLineY(double x){
@@ -25,7 +25,7 @@ void findPosition(double x, double y){
     if(y == lineY){
         printf("Point is on the line");
     }
-    else if(y < lineY){
+    else if(y > lineY){
         printf("Point is above line");
     }
     else{
