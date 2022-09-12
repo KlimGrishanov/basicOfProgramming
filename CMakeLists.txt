@@ -3,4 +3,4 @@ project(basicOfProgramming)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(basicOfProgramming "Lab 1/lab1.2.c")
+add_executable(basicOfProgramming "Lab 2/lab2.c")

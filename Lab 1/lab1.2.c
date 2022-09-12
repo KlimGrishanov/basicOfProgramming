@@ -15,7 +15,7 @@ void findPosition(double x, double y);
 void findArea(int ansFirstLine, int ansSecondLine, int ansThirdLine);
 void findIntersection(int ansFirstLine, int ansSecondLine, int ansThirdLine);
 
-double input(double *x, double *y);
+void input(double *x, double *y);
 
 int main(){
     double x, y;
@@ -27,7 +27,7 @@ void printArea(int numArea){
     printf("The point in %d area", numArea);
 }
 
-double input(double *x, double *y){
+void input(double *x, double *y){
     printf("Please insert coordinates of the point: \n");
     scanf("%lf %lf", x, y);
 }
