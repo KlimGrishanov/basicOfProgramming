@@ -68,13 +68,13 @@ void start(double fromNum, double toNum, int iter){
 void funcFor(double fromNum, double stepI, int iter){
     double x = fromNum;
     printf("for:\nx    |");
-    for(double i = 0; i < iter; i++){
+    for(int i = 0; i < iter; i++){
         printf(" %6.5lf |", fromNum);
         fromNum += stepI;
     }
     fromNum = x;
     printf("\nf(x) |");
-    for(double i = 0; i < iter; i++){
+    for(int i = 0; i < iter; i++){
         double temp = f(fromNum);
         if(isnan(temp)){
             printf(" Cant calc |");
@@ -98,13 +98,13 @@ void funcWhile(double fromNum, double toNum, double stepI){
             printf(" %6.5lf |", f(fromNum));
         }
     }else{
-        while(fromNum <= toNum){
+        while(fromNum < toNum + stepI){
             printf(" %6.5lf |", fromNum);
             fromNum += stepI;
         }
         fromNum = temp;
         printf("\nf(x) |");
-        while(fromNum <= toNum){
+        while(fromNum < toNum + stepI){
             check = f(fromNum);
             if(isnan((check))){
                 printf(" Cant calc |");
@@ -122,7 +122,7 @@ void funcDoWhile(double fromNum, double toNum, double stepI){
     do{
         printf(" %6.5lf |", fromNum);
         fromNum += stepI;
-    }while(fromNum <= toNum);
+    }while(fromNum < toNum + stepI);
     fromNum = temp;
     printf("\nf(x) |");
     do{
@@ -133,5 +133,5 @@ void funcDoWhile(double fromNum, double toNum, double stepI){
             printf(" %6.5lf |", f(fromNum));
         }
         fromNum += stepI;
-    }while(fromNum <= toNum);
+    }while(fromNum < toNum + stepI);
 }
