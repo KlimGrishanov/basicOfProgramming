@@ -1,26 +1,47 @@
 #include <stdio.h>
 #include <math.h>
 
-void funcFor(double fromNum, double toNum, double stepI);
+void funcFor(double fromNum, double stepI, int iter);
 void funcWhile(double fromNum, double toNum, double stepI);
 void funcDoWhile(double fromNum, double toNum, double stepI);
 
-void input(double *fromNum, double *toNum, double *iter);
-int check(double fromNum, double toNum, double iter);
+double f(double i);
+void start(double fromNum, double toNum, int iter);
+void input(double *fromNum, double *toNum, int *iter);
+int check(double fromNum, double toNum, int iter);
 
-double stepIter(double fromNum, double toNum, double iter);
+double stepIter(double fromNum, double toNum, int iter);
 
-void input(double *fromNum, double *toNum, double *iter){
-    printf("Please insert fromNum, toNum and number of iterations");
+int main(void){
+    double fromNum, toNum, iter;
+    while(1){
+        input(&fromNum, &toNum, &iter);
+        if(check(fromNum, toNum, iter)){
+            start(fromNum, toNum, iter);
+            break;
+        }
+        else{
+            printf("Error! Iterration <= 0 or right border equals left border without 1 iter or iter 1 but 2 border!\n");
+        }
+    }
+    return 0;
+}
+
+double f(double i){
+    return ((sin(i)*sin(i)) / i);
+}
+
+void input(double *fromNum, double *toNum, int *iter){
+    printf("Please insert fromNum, toNum and number of iterations\n");
     scanf("%lf %lf %lf", fromNum, toNum, iter);
 }
 
-double stepIter(double fromNum, double toNum, double iter){
-    return (toNum-fromNum)/(iter);
+double stepIter(double fromNum, double toNum, int iter){
+    return (toNum-fromNum)/(iter-1);
 }
 
-int check(double fromNum, double toNum, double iter){
-    if(fromNum < 0 || toNum < fromNum || toNum <= 0 || iter <= 0){
+int check(double fromNum, double toNum, int iter){
+    if(iter <= 0 || (fromNum == toNum && iter != 1) || (fromNum != toNum && iter == 1)){
         return 0;
     }
     else{
@@ -28,47 +49,70 @@ int check(double fromNum, double toNum, double iter){
     }
 }
 
-int main(void){
-    double fromNum, toNum, iter;
-    while(1){
-        input(&fromNum, &toNum, &iter);
-        if(check(fromNum, toNum, iter)){
-            double stepI = stepIter(fromNum, toNum, iter);
-            funcFor(fromNum, toNum, stepI);
-            funcWhile(fromNum, toNum, stepI);
-            funcDoWhile(fromNum, toNum, stepI);
-            break;
-        }
-        else{
-            printf("Error!\n");
-        }
+void start(double fromNum, double toNum, int iter){
+    double stepI;
+    if(fromNum > toNum){
+        stepI = stepIter(toNum, fromNum, iter);
+        funcFor(toNum, stepI, iter);
+        funcWhile(toNum, fromNum, stepI);
+        funcDoWhile(toNum, fromNum, stepI);
+    }
+    else{
+        stepI = stepIter(fromNum, toNum, iter);
+        funcFor(fromNum, stepI, iter);
+        funcWhile(fromNum, toNum, stepI);
+        funcDoWhile(fromNum, toNum, stepI);
     }
 }
 
-void funcFor(double fromNum, double toNum, double stepI){
-    printf("for:");
-    printf("\nx    |");
-    for(double i = fromNum; i < toNum - 0.000001; i += stepI){
-        printf(" %6.5lf |", i);
+void funcFor(double fromNum, double stepI, int iter){
+    double x = fromNum;
+    printf("for:\nx    |");
+    for(double i = 0; i < iter; i++){
+        printf(" %6.5lf |", fromNum);
+        fromNum += stepI;
     }
+    fromNum = x;
     printf("\nf(x) |");
-    for(double i = fromNum; i < toNum - 0.000001; i += stepI){
-        printf(" %6.5lf |", (sin(i)*sin(i)) / i);
+    for(double i = 0; i < iter; i++){
+        double temp = f(fromNum);
+        if(isnan(temp)){
+            printf(" Cant calc |");
+        }else{
+            printf(" %6.5lf |", f(fromNum));
+        }
+        fromNum += stepI;
     }
 }
 
 void funcWhile(double fromNum, double toNum, double stepI){
     printf("\nWhile:\nx    |");
     double temp = fromNum;
-    while(fromNum < toNum - 0.000001){
+    double check = f(fromNum);
+    if(fromNum == toNum){
         printf(" %6.5lf |", fromNum);
-        fromNum += stepI;
-    }
-    fromNum = temp;
-    printf("\nf(x) |");
-    while(fromNum < toNum - 0.000001){
-        printf(" %6.5lf |", (sin(fromNum) * sin(fromNum)) / fromNum);
-        fromNum += stepI;
+        printf("\nf(x) |");
+        if(isnan(check)){
+            printf(" Cant calc |");
+        }else {
+            printf(" %6.5lf |", f(fromNum));
+        }
+    }else{
+        while(fromNum <= toNum){
+            printf(" %6.5lf |", fromNum);
+            fromNum += stepI;
+        }
+        fromNum = temp;
+        printf("\nf(x) |");
+        while(fromNum <= toNum){
+            check = f(fromNum);
+            if(isnan((check))){
+                printf(" Cant calc |");
+            }else{
+                printf(" %6.5lf |", f(fromNum));
+            }
+            fromNum += stepI;
+        }
     }
 }
 
@@ -78,11 +122,16 @@ void funcDoWhile(double fromNum, double toNum, double stepI){
     do{
         printf(" %6.5lf |", fromNum);
         fromNum += stepI;
-    }while(fromNum < toNum-0.000001);
+    }while(fromNum <= toNum);
     fromNum = temp;
     printf("\nf(x) |");
     do{
-        printf(" %6.5lf |", (sin(fromNum) * sin(fromNum)) / fromNum);
+        double check = f(fromNum);
+        if(isnan((check))){
+            printf(" Cant calc |");
+        }else{
+            printf(" %6.5lf |", f(fromNum));
+        }
         fromNum += stepI;
-    }while(fromNum < toNum-0.000001);
+    }while(fromNum <= toNum);
 }
