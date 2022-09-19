@@ -13,7 +13,8 @@ int check(double fromNum, double toNum, int iter);
 double stepIter(double fromNum, double toNum, int iter);
 
 int main(void){
-    double fromNum, toNum, iter;
+    double fromNum, toNum;
+    int iter;
     while(1){
         input(&fromNum, &toNum, &iter);
         if(check(fromNum, toNum, iter)){
