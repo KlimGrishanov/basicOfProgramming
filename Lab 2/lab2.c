@@ -22,7 +22,7 @@ int main(void){
             break;
         }
         else{
-            printf("Error! Iterration <= 0 or right border equals left border without 1 iter or iter 1 but 2 border!\n");
+            printf("Try again\n");
         }
     }
     return 0;
@@ -42,12 +42,23 @@ double stepIter(double fromNum, double toNum, int iter){
 }
 
 int check(double fromNum, double toNum, int iter){
-    if(iter <= 0 || (fromNum == toNum && iter != 1) || (fromNum != toNum && iter == 1)){
-        return 0;
+    int ans;
+    if(iter <= 0){
+        printf("Iter below 0\n");
+        ans = 0;
+    }
+    else if(fromNum == toNum && iter != 1){
+        printf("Right border equal left border and iter more than 1\n");
+        ans = 0;
+    }
+    else if(fromNum != toNum && iter == 1){
+        printf("Iter equal 1, but must be at least 2 if right border dont equal left border\n");
+        ans = 0;
     }
     else{
-        return 1;
+        ans = 1;
     }
+    return ans;
 }
 
 void start(double fromNum, double toNum, int iter){
