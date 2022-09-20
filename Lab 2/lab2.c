@@ -34,7 +34,7 @@ double f(double i){
 
 void input(double *fromNum, double *toNum, int *iter){
     printf("Please insert fromNum, toNum and number of iterations\n");
-    scanf("%lf %lf %lf", fromNum, toNum, iter);
+    scanf("%lf %lf %d", fromNum, toNum, iter);
 }
 
 double stepIter(double fromNum, double toNum, int iter){
