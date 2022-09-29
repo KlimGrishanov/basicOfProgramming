@@ -31,12 +31,12 @@ int main(void){
 }
 
 void printCell(double value){
-    printf(" %6.5lf |", value);
+    printf(" %10.3lf\t|", value);
 }
 
 void checkIsNan(double value){
     if(isnan(value)){
-        printf(" CantCalc|");
+        printf("      Error!\t|");
     }else{
         printCell(value);
     }
@@ -75,10 +75,7 @@ int check(double fromNum, double toNum, int iter){
 void start(double fromNum, double toNum, int iter){
     double stepI;
     if(fromNum > toNum){
-        stepI = stepIter(toNum, fromNum, iter);
-        funcFor(toNum, stepI, iter);
-        funcWhile(toNum, fromNum, stepI);
-        funcDoWhile(toNum, fromNum, stepI);
+        printf("Error, leftBorder larger rightBorder");
     }
     else{
         stepI = stepIter(fromNum, toNum, iter);
