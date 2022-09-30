@@ -1,20 +1,29 @@
 #include <stdio.h>
-
+// tests are good
 double Abs(double x);
 double factorial(double n, double prevfact);
 double f(double n, double prevfact);
 double solve(double e);
+int check(double e);
 void input(double *e);
 
 int main(void){
     double e;
-    input(&e);
-    if(e<=0){
-        printf("Error");
-    }else{
-        solve(e);
+    while(1){
+        input(&e);
+        if(check(e)){
+            solve(e);
+            break;
+        }
+        else{
+            printf("Error!\n");
+        }
     }
     return 0;
+}
+
+int check(double e){
+    return e <= 0 ? 0 : 1;
 }
 
 void input(double *e) {
@@ -22,7 +31,7 @@ void input(double *e) {
     scanf("%lf", e);
 }
 
-double Abs(double x){
+double Abs(double x){ // fabs abs
     return x >= 0 ? x : x*(-1);
 }
 
@@ -35,9 +44,9 @@ double f(double n, double prevfact){
 }
 
 double solve(double e){
-    double n = 2;
+    double n = 1;
     double prevSum;
-    double sum = 1;
+    double sum = 0;
     double prevfact = 1;
     double step;
     do{

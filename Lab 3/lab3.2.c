@@ -46,7 +46,7 @@ double Abs(double x){
 
 double rightRectangle(double n, double x, double h){
     double s = 0;
-    for(int i = 1; i <= n; i++){
+    for(int i = 0; i <= n; i++){
         s += calcElem(h, x);
         x += h;
     }
