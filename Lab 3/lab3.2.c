@@ -4,7 +4,6 @@
 double calcElem(double h, double x);
 double rightRectangle(double n, double x, double h);
 double calcH(double a, double b, double n);
-double Abs(double x);
 double checkSum(double e, double a, double b);
 void input(double *a, double *b, double *e);
 int check(double a, double b, double e);
@@ -40,15 +39,11 @@ double calcElem(double h, double x){
     return h * log(x);
 }
 
-double Abs(double x){
-    return x >= 0 ? x : x*(-1);
-}
-
 double rightRectangle(double n, double x, double h){
     double s = 0;
-    for(int i = 0; i <= n; i++){
+    for(int i = 0; i < n; i++){
         s += calcElem(h, x);
-        x += h;
+        x -= h;
     }
     return s;
 }
@@ -58,14 +53,14 @@ double calcH(double a, double b, double n){
 }
 
 double checkSum(double e, double a, double b){
-    double n = 2;
-    double firstCalc = rightRectangle(n, a, calcH(a, b, n));
+    double n = 1;
+    double firstCalc = rightRectangle(n, b, calcH(a, b, n));
     n *= 2;
-    double nextCalc = rightRectangle(n, a, calcH(a, b, n));
-    while(Abs(firstCalc-nextCalc) >= e){
+    double nextCalc = rightRectangle(n, b, calcH(a, b, n));
+    while(fabs(firstCalc-nextCalc) >= e){
         firstCalc = nextCalc;
         n = n * 2;
-        nextCalc = rightRectangle(n, a, calcH(a, b, n));
+        nextCalc = rightRectangle(n, b, calcH(a, b, n));
     }
     return nextCalc;
 }
